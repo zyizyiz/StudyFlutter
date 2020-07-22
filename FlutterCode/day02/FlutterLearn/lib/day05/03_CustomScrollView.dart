@@ -56,27 +56,27 @@ class CustomScrollViewDemo extends StatelessWidget {
           ),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              childAspectRatio: 2
+                crossAxisCount: 2,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                childAspectRatio: 2
             ),
             delegate: SliverChildBuilderDelegate((BuildContext ctx, int index) {
               return Container(color: Color.fromARGB(255, Random().nextInt(
                   256), Random().nextInt(256), Random().nextInt(256)));
             },
-            childCount: 10),
+                childCount: 10),
 
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                (BuildContext ctx, int index) {
+                    (BuildContext ctx, int index) {
                   return ListTile(
                     leading: Icon(Icons.people),
                     title: Text("联系人$index"),
                   );
                 },
-              childCount: 20
+                childCount: 20
             ),
           ),
         ],
@@ -98,18 +98,18 @@ class CustomScrollView2 extends StatelessWidget {
               padding: EdgeInsets.all(8),
               sliver: SliverGrid(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                  childAspectRatio: 1.5
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 1.5
                 ),
                 delegate: SliverChildBuilderDelegate(
-                    (BuildContext ctx, int index) {
+                        (BuildContext ctx, int index) {
                       print("CustomScrollView2  $index");
                       return Container(color: Color.fromARGB(255, Random().nextInt(
                           256), Random().nextInt(256), Random().nextInt(256)));
                     },
-                  childCount: 10
+                    childCount: 10
                 ),
               ),
             ),
