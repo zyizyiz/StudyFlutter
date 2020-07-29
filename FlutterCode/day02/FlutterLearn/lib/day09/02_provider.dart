@@ -1,17 +1,16 @@
 
 
-import 'package:FlutterLearn/day09/01_inheritedWidget.dart';
+import 'package:FlutterLearn/day09/viewmodel/counter_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'day09/viewmodel/counter_view_model.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (ctx) => ZCounterViewModel(),
-      child: MyApp(),
-    )
+      ChangeNotifierProvider(
+        create: (ctx) => ZCounterViewModel(),
+        child: MyApp(),
+      )
   );
 }
 
@@ -92,12 +91,12 @@ class ZShowData02 extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Card(
-      color: Colors.blue,
-      child: Consumer<ZCounterViewModel>(
-        builder: (ctx, counterVM, child){
-          return Text("当前计数: ${counterVM.counter}", style: TextStyle(fontSize: 30),);
-        },
-      )
+        color: Colors.blue,
+        child: Consumer<ZCounterViewModel>(
+          builder: (ctx, counterVM, child){
+            return Text("当前计数: ${counterVM.counter}", style: TextStyle(fontSize: 30),);
+          },
+        )
     );
 
   }
