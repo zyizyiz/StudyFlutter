@@ -36,69 +36,36 @@ class ZHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("首页"),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ZShowData01(),
-            ZShowData02()
-          ],
+        body: Center(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              GestureDetector(
+                onTapDown: (details) {
+                  print("outer click");
+                },
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.yellow,
+                  alignment: Alignment.center,
+                ),
+              ),
+              IgnorePointer(
+                child: GestureDetector(
+                  onTapDown: (details) {
+                    print("inner click");
+                  },
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-
-        floatingActionButton: Selector<ZCounterViewModel, ZCounterViewModel>(
-          selector: (ctx, counterVM) => counterVM,
-          shouldRebuild: (pre, next) => false,
-          builder: (ctx, counterVM, child) {
-            return FloatingActionButton(
-              child: child,
-              onPressed: () {
-                counterVM.counter += 1;
-              },
-            );
-          },
-          child: Icon(Icons.add),
-        )
-
     );
-  }
-}
-
-
-class ZShowData01 extends StatefulWidget {
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return _ZShowData01State();
-  }
-}
-
-class _ZShowData01State extends State<ZShowData01> {
-
-  @override
-  Widget build(BuildContext context) {
-    int counter = Provider.of<ZCounterViewModel>(context).counter;
-    return Card(
-      color: Colors.red,
-      child: Text("当前计数: $counter", style: TextStyle(fontSize: 30),),
-    );
-
-  }
-}
-
-
-class ZShowData02 extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Card(
-      color: Colors.blue,
-      child: Consumer<ZCounterViewModel>(
-        builder: (ctx, counterVM, child){
-          return Text("当前计数: ${counterVM.counter}", style: TextStyle(fontSize: 30),);
-        },
-      )
-    );
-
   }
 }
