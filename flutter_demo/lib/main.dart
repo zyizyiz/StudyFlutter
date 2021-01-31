@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'layout_demo.dart';
+import 'package:flutter_demo/state_mag_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +22,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("Flutter Demo"),
       ),
-      body: LayoutDemo(),
+      body: StateManagerDemo(),
     );
   }
 }
