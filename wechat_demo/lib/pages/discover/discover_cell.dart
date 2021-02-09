@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'discover_child_page.dart';
 
-class DiscoverCell extends StatelessWidget {
+class DiscoverCell extends StatefulWidget {
   final String title;
 
   final String subTitle;
@@ -14,14 +14,35 @@ class DiscoverCell extends StatelessWidget {
   DiscoverCell({this.title, this.subTitle, this.imageName, this.subImageName});
 
   @override
+  _DiscoverCellState createState() => _DiscoverCellState();
+}
+
+class _DiscoverCellState extends State<DiscoverCell> {
+  Color _backgroundColor = Colors.white;
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {
+      onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => DiscoverChildPage(title)))
+            builder: (BuildContext context) =>
+                DiscoverChildPage(widget.title)));
+
+        setState(() {
+          _backgroundColor = Colors.white;
+        });
+      },
+      onTapDown: (TapDownDetails details) {
+        setState(() {
+          _backgroundColor = Colors.grey;
+        });
+      },
+      onTapCancel: () {
+        setState(() {
+          _backgroundColor = Colors.white;
+        });
       },
       child: Container(
-        color: Colors.white,
+        color: _backgroundColor,
         height: 54,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,13 +53,13 @@ class DiscoverCell extends StatelessWidget {
               child: Row(
                 children: [
                   Image(
-                    image: AssetImage(imageName),
+                    image: AssetImage(widget.imageName),
                     width: 20,
                   ),
                   SizedBox(
                     width: 15,
                   ),
-                  Text(title)
+                  Text(widget.title)
                 ],
               ),
             ),
@@ -47,10 +68,10 @@ class DiscoverCell extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Row(
                 children: [
-                  subTitle != null ? Text(subTitle) : Text(""),
-                  subImageName != null
+                  widget.subTitle != null ? Text(widget.subTitle) : Text(""),
+                  widget.subImageName != null
                       ? Image(
-                          image: AssetImage(subImageName),
+                          image: AssetImage(widget.subImageName),
                           width: 15,
                         )
                       : Container(),

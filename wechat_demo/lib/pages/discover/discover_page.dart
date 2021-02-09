@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:wechat_demo/pages/discover/discover_cell.dart';
 
+import '../../const.dart';
+
 class DiscoverPage extends StatefulWidget {
   @override
   _DiscoverPageState createState() => _DiscoverPageState();
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
-  Color _themeColor = Color.fromRGBO(200, 200, 200, 1.0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: _themeColor,
+        backgroundColor: WeChatThemeColor,
         // 以下三个是专门为了Android使用的属性
         title: Text(
           "发现",
-          style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
         elevation: 0.0,
@@ -24,7 +24,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
         /// 底部边栏
       ),
       body: Container(
-        color: _themeColor,
+        color: WeChatThemeColor,
         height: 800,
         child: ListView(
           children: [
