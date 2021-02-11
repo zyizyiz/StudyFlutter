@@ -10,7 +10,8 @@ class ChatPage extends StatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatPageState extends State<ChatPage>
+    with AutomaticKeepAliveClientMixin {
   List<Chat> _dataList = [];
   Future<List<Chat>> getDatas() async {
     // http
@@ -56,7 +57,11 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         appBar: AppBar(
           title: Text("微信页面"),
